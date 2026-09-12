@@ -1,25 +1,56 @@
 {
   "expo": {
     "name": "MenuLens",
-    "slug": "MenuLens",
+    "slug": "menulens",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
+    "scheme": "menulens",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vivalameta.menulens",
+      "infoPlist": {
+        "NSCameraUsageDescription": "MenuLens needs camera access to scan restaurant menus.",
+        "NSPhotoLibraryUsageDescription": "MenuLens needs photo library access so you can pick menu photos from your gallery.",
+        "NSMicrophoneUsageDescription": "Required for video recording (not used by MenuLens)."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "backgroundColor": "#000000",
+        "foregroundImage": "./assets/adaptive-icon.png"
       },
-      "predictiveBackGestureEnabled": false
+      "package": "com.vivalameta.menulens",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "READ_MEDIA_IMAGES"
+      ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "MenuLens needs camera access to scan restaurant menus."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "MenuLens needs photo library access to analyze menu photos from your gallery."
+        }
+      ],
+      "expo-secure-store",
+      "expo-localization",
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
